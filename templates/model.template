@@ -1,0 +1,49 @@
+{{#sortedModel}}
+    <td data-ref="{{modelRef}}"
+        {{^showing}}
+            style="display:none"
+        {{/showing}}
+        {{^hreflang}}
+            data-content="{{value}}"
+        {{/hreflang}}
+        {{#list}}
+            data-has-next="{{^hreflang}}true{{/hreflang}}{{#hreflang}}{{hreflangHasNext}}{{/hreflang}}" data-has-prev="false" data-index="0"
+        {{/list}}>
+        {{#list}}
+            <a class="prev-item" href="#">
+                <i class="cmp-icon-2-arrow-left-2"></i>
+            </a>
+        {{/list}}
+        {{^hreflang}}
+            <span>
+                {{#escaped}}
+                    {{display}}
+                {{/escaped}}
+                {{^escaped}}
+                    {{{display}}}
+                {{/escaped}}
+            </span>
+        {{/hreflang}}
+        {{#hreflang}}
+            <div class="href-scroller">
+                <span class="hreflang-holder">
+                    <div class="scroll-inner">
+                        {{{hreflanghtml}}}
+                    </div>
+                </span>
+            </div>
+        {{/hreflang}}
+        {{#list}}
+            <a class="next-item" href="#">
+                <i class="cmp-icon-2-arrow-right-2"></i>
+            </a>
+        {{/list}}
+    </td>
+{{/sortedModel}}
+{{#options.csvDownload}}
+    <td class="select-checkbox">
+        <div class="table-cell-fix">
+            <input type="checkbox" class="select-checkbox"{{#options.allSelected}} checked="checked"{{/options.allSelected}} />
+        </div>
+    </td>
+{{/options.csvDownload}}

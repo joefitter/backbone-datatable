@@ -1,0 +1,47 @@
+<div class="static-table-header">
+    <div class="controls-reverse{{#toggleCols}} toggle{{/toggleCols}} middle">
+        <input type="search" id="quickSearch" results="5" placeholder="search table..." />
+        {{#csvDownload}}
+            <button class="btn btn-primary generate-csv">Download CSV</button>
+        {{/csvDownload}}
+        <div class="clear"></div>
+    </div>
+    <table class="backbone-datagrid-head">
+        <thead>
+            <tr>
+                {{#schema.models}}
+                    <th draggable="true" data-ref="{{#getAttr}}modelRef{{/getAttr}}"{{#attributes.isDefault}} aria-sort="ascending"{{/attributes.isDefault}} class="draggable{{#attributes.sortable}} sortable{{/attributes.sortable}}{{#attributes.isDefault}} sorting_asc{{/attributes.isDefault}}"{{^attributes.showing}} style="display:none;"{{/attributes.showing}}>
+                        {{#getAttr}}title{{/getAttr}}
+                        {{#attributes.unit}}({{.}}){{/attributes.unit}}
+                    </th>
+                {{/schema.models}}
+                {{#csvDownload}}
+                    <th class="select-all">
+                        <input type="checkbox" id="select-all"{{#allSelected}} checked="checked"{{/allSelected}} />
+                    </th>
+                {{/csvDownload}}
+            </tr>
+        </thead>
+    </table>
+</div>
+<div id="dynamic-table-content-holder">
+    <div id="dynamic-table-content"></div>
+    <div class="blur-div" id="datatable-loading"></div>
+</div>
+<div class="static-table-footer">
+    <table class="backbone-datagrid-footer">
+        <tfoot>
+            <tr>
+                <td>
+                    <span id="summary">Showing <span id="showing-from">0</span> to <span id="showing-to">0</span> of <span id="showing-total">0</span> entries</span><span id="filteredFrom"></span>
+                </td>
+                {{#csvDownload}}
+                    <td>
+                        <button class="btn btn-primary generate-csv">Download CSV</button>
+                        <div id="footer-spinner"></div>
+                    </td>
+                {{/csvDownload}}
+            </tr>
+        </tfoot>
+    </table>
+</div>
