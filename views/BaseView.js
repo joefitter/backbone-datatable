@@ -17,6 +17,7 @@ define([
 
   return Backbone.View.extend({
     initialize: function(options) {
+      var self = this;
       this.options = options || {};
       this.el = this.options.el;
       delete this.options.el;
@@ -24,6 +25,9 @@ define([
       this.collectionView = new CollectionView(this.options);
       this.listenTo(this.collectionView.collection, 'end', this.finishedLoad);
       this.listenTo(this.collectionView.collection, 'no-data', this.noData);
+      this.listenTo(this.collectionView.collection, 'loading', function(){
+        self.trigger('loading');
+      });
       this.render();
     },
     createColumns: function() {

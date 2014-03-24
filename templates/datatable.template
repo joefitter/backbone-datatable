@@ -26,7 +26,6 @@
 </div>
 <div id="dynamic-table-content-holder">
     <div id="dynamic-table-content"></div>
-    <div class="blur-div" id="datatable-loading"></div>
 </div>
 <div class="static-table-footer">
     <table class="backbone-datagrid-footer">

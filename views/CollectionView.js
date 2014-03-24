@@ -129,6 +129,7 @@ define([
         limit = 10,
         value = $('input#quickSearch').val();
       if (((scrollTop + height) / totalHeight) * 100 >= 90) {
+        this.collection.trigger('loading');
         this.collection.fetch({
           data: {
             id: self.options.refId,
