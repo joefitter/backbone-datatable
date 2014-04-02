@@ -280,10 +280,12 @@ define([
 
       var string = '';
 
+      function strigify(col){
+        return '"' + col.toString().replace('"', '""') + '"';
+      }
+
       for (var x = 0; x < csvContent.length; x++) {
-        string += _(csvContent[x]).map(function(column) {
-          return '"' + column.toString().replace('"', '""') + '"';
-        }).join(',');
+        string += _(csvContent[x]).map(strigify).join(',');
 
         string += '\n';
       }
